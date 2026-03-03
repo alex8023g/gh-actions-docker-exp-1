@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    ports:
+      - "${PORT_EXPOSE}:3000"
+    environment:
+      - NODE_ENV=production

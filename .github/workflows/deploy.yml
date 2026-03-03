@@ -17,6 +17,9 @@ jobs:
       - name: Remove image
         run: docker compose down --rmi local
 
+      - name: Load .env
+        run: cp $HOME/gh-runner-gh-actions-docker-exp-1/.env .env
+
       - name: Build new image
         run: docker compose build
 

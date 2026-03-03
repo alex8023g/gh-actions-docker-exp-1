@@ -21,7 +21,9 @@ jobs:
         run: docker compose down --rmi local
 
       - name: Load .env
-        run: cp $HOME/gh-runner-gh-actions-docker-exp-1/.env .env
+        run: |
+          RUNNER_HOME=$(dirname $(dirname $(dirname $(pwd))))
+          cp $RUNNER_HOME/.env .env
 
       - name: Build new image
         run: docker compose build

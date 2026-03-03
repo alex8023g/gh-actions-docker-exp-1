@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Get current folder
+        run: pwd
+
       - name: Stop container
         run: docker compose down
 

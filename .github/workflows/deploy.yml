@@ -11,22 +11,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get current folder
-        run: pwd
-
       - name: Stop container
         run: docker compose down
 
       - name: Remove image
         run: docker compose down --rmi local
 
-      - name: Load .env
+      - name: Load .env from runner directory to current directory
         run: |
           RUNNER_HOME=$(dirname $(dirname $(dirname $(pwd))))
           cp $RUNNER_HOME/.env .env
 
-      - name: Build new image
-        run: docker compose build
+      # - name: Build new image
+      #   run: docker compose build
 
       - name: Start container
         run: docker compose up -d

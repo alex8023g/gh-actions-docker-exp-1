@@ -11,9 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - name: Stop container
-      #   run: docker compose down
-
       - name: Remove image
         run: docker compose down --rmi local
 
@@ -21,9 +18,6 @@ jobs:
         run: |
           RUNNER_HOME=$(dirname $(dirname $(dirname $(pwd))))
           cp $RUNNER_HOME/.env .env
-
-      # - name: Build new image
-      #   run: docker compose build
 
       - name: Start container
         run: docker compose up -d
